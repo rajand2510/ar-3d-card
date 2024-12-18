@@ -8,7 +8,7 @@ A lightweight React component for displaying products in both Augmented Reality 
 You can install the package via npm or yarn:
 
 ```bash
-npm install AR 3D Product Card
+npm install 3d-ar-product-card
 ```
 
 ## Usage
@@ -26,8 +26,6 @@ function App() {
     <div>
       <AR3DProductCard 
         gltfPath="/models/indoor_plant/scene.gltf" 
-        positionY={-3} 
-        initialScale={4} 
         imageSrc="/image/1.png" 
       />
     </div>
@@ -40,10 +38,6 @@ export default App;
 
 ## Props
 - gltfPath (string): The path to the 3D model file (GLTF format).
-
-- positionY (number): The Y-axis position of the 3D model in the scene.
-
-- initialScale (number): The initial scale of the 3D model.
 
 - imageSrc (string): The image to display on the product card.
 

@@ -41,8 +41,6 @@
 
 // const Home = ({ 
 //   gltfPath = "/models/indoor_plant/scene.gltf", 
-//   positionY = 0, 
-//   initialScale = 1, 
 //   imageSrc = "/image/1.png" 
 // }) => {
 //   const [showQrScanner, setShowQrScanner] = useState(false);
@@ -102,7 +100,7 @@
 //                 />
 //               </button>
 //             </div>
-//             <ProductCard gltfPath={gltfPath} positionY={positionY} initialScale={initialScale} />
+//             <ProductCard gltfPath={gltfPath}/>
 //           </div>
 //         </div>
 //       )}
@@ -146,8 +144,16 @@
 // import React from 'react';
 
 import { QRCodeSVG } from 'qrcode.react';
+import "@google/model-viewer";
 import './styles.css';
+import React, { useState, useEffect } from 'react';
+import PropTypes from 'prop-types';
+if (!customElements.get('model-viewer')) {
+    import('@google/model-viewer');
+}
 
+
+// import ProductCard from './ProductCard';
 function QrScannerCard({ onCancel, url }) {
   return (
     <article className="qr-scanner-card">
@@ -173,17 +179,12 @@ function QrScannerCard({ onCancel, url }) {
 
 
 
-import React, { useState, useEffect } from 'react';
 
-import ProductCard from './ProductCard';
-import PropTypes from 'prop-types';
 
 
 
 const AR3DProductCard  = ({ 
     gltfPath, 
-    positionY, 
-    initialScale, 
     imageSrc 
   }) => {
   const [showQrScanner, setShowQrScanner] = useState(false);
@@ -207,12 +208,10 @@ const AR3DProductCard  = ({
   useEffect(() => {
     const missingFields = [];
     if (!gltfPath) missingFields.push("gltfPath");
-    if (positionY == null) missingFields.push("positionY");
-    if (initialScale == null) missingFields.push("initialScale");
     if (!imageSrc) missingFields.push("imageSrc");
 
     setErrors(missingFields);
-  }, [gltfPath, positionY, initialScale, imageSrc]);
+  }, [gltfPath, imageSrc]);
 
   const handleRightButtonClick = () => {
     const baseUrl = window.location.origin;
@@ -245,16 +244,25 @@ const AR3DProductCard  = ({
     <div className="home-container">
       {showPopup && (
         <div className="popup-overlay">
-          <div className="popup-content">
-            <button onClick={handleClosePopup} className="close-button">
-              <img
-                src="https://cdn.builder.io/api/v1/image/assets/TEMP/8413f1e3d7bad3c1c6a2161fe0a5e57db6bf71b385607571aa0c4b09275a751c"
-                alt="Close"
-              />
-            </button>
-            <ProductCard gltfPath={gltfPath} positionY={positionY} initialScale={initialScale} />
+        <div className="popup-content">
+          <div
+            className="rounded-lg"
+            style={{ width: "480px", height: "380px" }}
+          >
+            <model-viewer
+              src={gltfPath}
+              alt="Home Decor Product"
+              auto-rotate
+              camera-controls
+              shadow-intensity="1"
+              style={{ width: "100%", height: "100%" }}
+            ></model-viewer>
           </div>
+          <button onClick={handleClosePopup} className="leave-button">
+            Leave
+          </button>
         </div>
+      </div>
       )}
 
       {showQrScanner ? (
@@ -282,8 +290,6 @@ const AR3DProductCard  = ({
 
 AR3DProductCard.propTypes = {
   gltfPath: PropTypes.string,
-  positionY: PropTypes.number,
-  initialScale: PropTypes.number,
   imageSrc: PropTypes.string
 };
 
