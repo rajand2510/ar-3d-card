@@ -241,7 +241,7 @@ const AR3DProductCard  = ({
   }
 
   return (
-    <div className="home-container">
+  <>
       {showPopup && (
         <div className="popup-overlay">
         <div className="popup-content">
@@ -284,8 +284,7 @@ const AR3DProductCard  = ({
           </button>
         </article>
       )}
-    </div>
-  );
+    </> );
 };
 
 AR3DProductCard.propTypes = {
