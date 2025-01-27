@@ -1,0 +1,192 @@
+/* General Styles for the Card */
+.main-card,
+.horizontal-slider,
+.detailed-card {
+  border-radius: 8px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease;
+  background-color: #ffffff;
+}
+
+.main-card img,
+.horizontal-slider img {
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
+.main-card:hover,
+.horizontal-slider:hover {
+  transform: scale(1.05);
+}
+
+.slider-wrapper {
+  display: flex;
+  gap: 20px;
+  overflow-x: auto;
+}
+
+.slider-item {
+  flex: 0 0 auto;
+  width: calc(25% - 20px); /* Adjust to show 4 products in one row */
+  text-align: center;
+}
+
+.slider-item img {
+  width: 100%;
+  border-radius: 8px;
+}
+
+.slider-item p {
+  font-weight: bold;
+  color: #333;
+}
+
+.qr-scanner-card {
+  position: relative;
+  background-color: #fff;
+  padding: 20px;
+  max-width: 320px;
+  margin: 0 auto;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+.qr-scanner-header {
+  position: relative;
+}
+
+.qr-scanner-footer {
+  margin-top: 15px;
+  font-size: 14px;
+  color: #ffffff;
+  font-weight: 500;
+}
+
+.cancel-button {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.cancel-img {
+  width: 20px;
+  height: 20px;
+}
+
+.popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 400px;
+  position: relative;
+  text-align: center;
+}
+
+.leave-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.model-viewer {
+  width: 100%;
+  height: 400px;
+  border-radius: 8px;
+}
+
+/* 3D/AR Buttons */
+.left-button,
+.right-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+  border-radius: 50%;
+  z-index: 10;
+}
+
+.left-button {
+  left: 10px;
+}
+
+.right-button {
+  right: 10px;
+}
+
+.left-button img,
+.right-button img {
+  width: 30px;
+  height: 30px;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .slider-item {
+    width: calc(50% - 20px); /* Adjust for 2 items in one row on mobile */
+  }
+
+  .qr-scanner-card {
+    max-width: 90%;
+  }
+
+  .popup-content {
+    max-width: 90%;
+  }
+}
+
+@media (max-width: 480px) {
+  .slider-item {
+    width: 100%; /* Single column for small screens */
+  }
+}
+
+/* AR and 3D Only Card Styles */
+.card-3d-only,
+.card-3d-ar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.card-3d-only model-viewer,
+.card-3d-ar model-viewer {
+  width: 100%;
+  height: 350px;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+
+/* Product Name */
+.main-card p,
+.slider-item p {
+  font-size: 16px;
+  font-weight: bold;
+  color: #333;
+  margin: 10px 0;
+}
