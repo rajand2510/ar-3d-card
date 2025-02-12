@@ -502,10 +502,10 @@ const Arcard = ({
 
       </div>
     )}
+ 
+    
 
-    {showQrScanner && !isMobile && <QrScannerCard onCancel={handleCancel} url={showQrScanner} />}
-
-    {!showQrScanner && (
+    
       <>
         {/* Minimal Style */}
         {cardStyle === "minimal" && (
@@ -526,6 +526,8 @@ const Arcard = ({
               overflow: "auto", // Needed for resize to work
             }}
           >
+          
+             {!showQrScanner && ( 
             <model-viewer
               src={gltfPath}
               alt="3D Product"
@@ -539,7 +541,25 @@ const Arcard = ({
                 borderRadius: "10px",
               }}
             ></model-viewer>
-
+          )}
+          
+          
+           {showQrScanner && !isMobile && 
+            <div 
+              style={{
+                width: "100%",
+                height: "100%",
+               display:"flex",
+               justifyContent:"center",
+               alignContent:"center",
+               alignItems:"center",
+                backgroundColor: "rgba(255, 255, 255, 0.05)"
+              }}
+            >
+              <QrScannerCard onCancel={handleCancel} url={showQrScanner} />
+            </div>
+          }
+  {!showQrScanner && ( 
 <button
               onClick={handleRightButtonClick}
               style={{
@@ -556,6 +576,9 @@ const Arcard = ({
                 transition: "transform 0.3s",
               }}
             ></button>
+          )}
+
+            
           </article>
         )}
 
@@ -581,6 +604,22 @@ const Arcard = ({
               overflow: "auto", // Needed for resize
             }}
           >
+    {showQrScanner && !isMobile && 
+            <div 
+              style={{
+                width: "100%",
+                height: "100%",
+               display:"flex",
+               justifyContent:"center",
+               alignContent:"center",
+               alignItems:"center",
+                backgroundColor: "rgba(255, 255, 255, 0.05)"
+              }}
+            >
+              <QrScannerCard onCancel={handleCancel} url={showQrScanner} />
+            </div>
+          }
+{!showQrScanner && ( 
             <model-viewer
               src={gltfPath}
               alt="3D Product"
@@ -594,7 +633,9 @@ const Arcard = ({
                 borderRadius: "10px",
               }}
             ></model-viewer>
+          )}
 
+{!showQrScanner && ( 
 <button
               onClick={handleRightButtonClick}
               style={{
@@ -611,10 +652,11 @@ const Arcard = ({
                 transition: "transform 0.3s",
               }}
             ></button>
+          )}
           </article>
         )}
       </>
-    )}
+ 
   </>
 )}
 {type === "detailed" && (
@@ -677,7 +719,7 @@ const Arcard = ({
     )}
 
     <div style={{
-      width: "80vw",
+      width: "70vw",
       margin: "20px auto",
       maxWidth: "1400px",
       position: "relative"
@@ -722,6 +764,7 @@ const Arcard = ({
               }}
             ></model-viewer>
           )}
+        
           {showQrScanner && !isMobile && 
             <div 
               style={{
