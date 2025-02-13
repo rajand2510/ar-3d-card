@@ -32,7 +32,6 @@ function QrScannerCard({ onCancel, url }) {
 // Main Arcard Component
 const Arcard = ({
     gltfPath,
-    imageSrc,
     productName,
     productDescription,
     type,
@@ -65,10 +64,9 @@ const Arcard = ({
     useEffect(() => {
         const missingFields = [];
         if (!gltfPath && type !== "horizontal-slider") missingFields.push("gltfPath");
-        if (!imageSrc && type !== "horizontal-slider") missingFields.push("imageSrc");
 
         setErrors(missingFields);
-    }, [gltfPath, imageSrc, type]);
+    }, [gltfPath, type]);
 
     const handleRightButtonClick = () => {
         const baseUrl = window.location.origin;
@@ -327,15 +325,7 @@ const Arcard = ({
 
 
 
-            {type === "horizontal-slider" && (
-                <div className="horizontal-slider-card">
-                    <img src={imageSrc} alt="Product" className="slider-image" />
-                    <p>{productDetails.name}</p>
-                    <button onClick={handleRightButtonClick} className="view-ar-button">
-                        View AR
-                    </button>
-                </div>
-            )}
+        
 
 {type === "3d-only" && (
   <div style={{ position: "relative", width: "300px", margin: "20px auto" }}>
@@ -870,7 +860,6 @@ const Arcard = ({
 
 Arcard.propTypes = {
     gltfPath: PropTypes.string,
-    imageSrc: PropTypes.string,
     productName: PropTypes.string,
     productPrice: PropTypes.string,
     productRating: PropTypes.string,

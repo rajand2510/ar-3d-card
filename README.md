@@ -8,18 +8,18 @@ A lightweight React component for displaying products in both Augmented Reality 
 You can install the package via npm or yarn:
 
 ```bash
-npm install 3d-ar-product-card
+npm install room-craft
 ```
 
 ## Usage
 
 ```bash
-import { AR3DProductCard } from '3d-ar-product-card';
+import { AR3DProductCard } from 'room-craft';
 ```
 ## Basic Example
 ```bash
 import React from 'react';
-import { AR3DProductCard } from '3d-ar-product-card';
+import { AR3DProductCard } from 'room-craft';
 
 function App() {
   return (
@@ -47,12 +47,12 @@ Make this src/components folder
 name as Arcomponent.jsx
 
 ```bash
-import { XrHitModelContainer } from '3d-ar-product-card';
+import { XrHitModelContainer } from 'room-craft';
 ```
 
 ```bash
 import { useLocation } from 'react-router-dom';
-import { XrHitModelContainer } from '3d-ar-product-card';
+import { XrHitModelContainer } from 'room-craft';
 
 const Arcomponent = () => {
   const location = useLocation();
