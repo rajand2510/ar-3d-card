@@ -164,12 +164,10 @@ const Arcard = ({
     )}
 
     {/* Show the QR Scanner only on desktop */}
-    {showQrScanner && !isMobile && (
-      <QrScannerCard onCancel={handleCancel} url={showQrScanner} />
-    )}
+  
 
     {/* Main content for AR display */}
-    {!showQrScanner && (
+  
       <>
         {/* Minimal Style */}
         {cardStyle === "minimal" && (
@@ -184,8 +182,12 @@ const Arcard = ({
               transition: "transform 0.3s",
               cursor: "pointer",
               marginBottom: "20px",
+               padding: showQrScanner ? "0px" : "5px"
             }}
           >
+
+             {!showQrScanner && (
+               <>
             <model-viewer
               src={gltfPath}
               alt="3D Product"
@@ -206,7 +208,7 @@ const Arcard = ({
     bottom: "7px",
     left: "50%",
     transform: "translateX(-50%)",
-    fontSize: "18px",
+    fontSize: "16px",
     fontWeight: "600",
     color: textColor || "#fff",
     margin: "0",
@@ -238,6 +240,11 @@ const Arcard = ({
                 transition: "transform 0.3s",
               }}
             ></button>
+         </>
+             )}
+               {showQrScanner && !isMobile && (
+      <QrScannerCard onCancel={handleCancel} url={showQrScanner} />
+    )}
           </article>
         )}
 
@@ -257,9 +264,12 @@ const Arcard = ({
               transition: "transform 0.3s",
               cursor: "pointer",
               marginBottom: "20px",
-              padding: "10px",
+             padding: showQrScanner ? "0px" : "5px"
             }}
           >
+
+{!showQrScanner && (
+               <>
             <model-viewer
               src={gltfPath}
               alt="3D Product"
@@ -280,7 +290,7 @@ const Arcard = ({
     bottom: "7px",
     left: "50%",
     transform: "translateX(-50%)",
-    fontSize: "18px",
+    fontSize: "16px",
     fontWeight: "600",
     color: textColor || "#fff",
     margin: "0",
@@ -313,12 +323,18 @@ const Arcard = ({
                 transition: "transform 0.3s",
               }}
             ></button>
+             </>
+             )}
+               {showQrScanner && !isMobile && (
+      <QrScannerCard onCancel={handleCancel} url={showQrScanner} />
+    )}
           </article>
         )}
       </>
-    )}
+   
   </>
 )}
+
 
 
 
@@ -328,22 +344,21 @@ const Arcard = ({
         
 
 {type === "3d-only" && (
-  <div style={{ position: "relative", width: "300px", margin: "20px auto" }}>
+  <>
     {/* Card Style 1 */}
     {cardStyle === "minimal" && (
       <div
+      className="main-card"
         style={{
-          background: "#fff",
+          position: "relative",
+          backgroundColor: cardColor || "#fff",
           borderRadius: "15px",
           overflow: "hidden",
-          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.2)",
-          padding: "15px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          boxShadow: "0 4px 15px rgba(0, 0, 0, 0.1)",
           transition: "transform 0.3s",
           cursor: "pointer",
+        
+           padding: "2px"
         }}
       >
         <model-viewer
@@ -355,13 +370,13 @@ const Arcard = ({
           style={{
             backgroundColor: cardColor,
             width: "100%",
-            height: "200px",
+            height: "250px",
             borderRadius: "10px",
           }}
         ></model-viewer>
         <p
           style={{
-            marginTop: "15px",
+            marginTop: "5px",
             fontSize: "16px",
             fontWeight: "600",
             color: textColor || "#111111",
@@ -382,20 +397,20 @@ const Arcard = ({
     {/* Card Style 3 */}
     {cardStyle === "glassmorphism" && (
       <div
+      className="main-card"
         style={{
-          background: "rgba(255, 255, 255, 0.2)",
-          borderRadius: "20px",
-          boxShadow: "0 8px 32px rgba(31, 38, 135, 0.37)",
+          position: "relative",
+          backgroundColor: "rgba(255, 255, 255, 0.1)",
           backdropFilter: "blur(10px)",
           WebkitBackdropFilter: "blur(10px)",
-          border: "1px solid rgba(255, 255, 255, 0.18)",
-          padding: "15px",
-          display: "flex",
-          flexDirection: "column",
-          alignItems: "center",
-          justifyContent: "center",
+          border: "1px solid rgba(255, 255, 255, 0.3)",
+          borderRadius: "15px",
+          overflow: "hidden",
+          boxShadow: "0 8px 32px rgba(31, 38, 135, 0.37)",
           transition: "transform 0.3s",
           cursor: "pointer",
+         
+         padding:"2px"
         }}
       >
         <model-viewer
@@ -404,11 +419,14 @@ const Arcard = ({
           auto-rotate
           camera-controls
           shadow-intensity="1"
-          style={{ width: "100%", height: "200px", borderRadius: "10px" }}
+          style={{  width: "100%",
+            height: "250px",
+            borderRadius: "10px",
+          }}
         ></model-viewer>
         <p
           style={{
-            marginTop: "15px",
+            marginTop: "5px",
             fontSize: "16px",
             fontWeight: "600",
             color: textColor || "#111111",
@@ -425,7 +443,7 @@ const Arcard = ({
       
       </div>
     )}
-  </div>
+  </>
 )}
 
 
