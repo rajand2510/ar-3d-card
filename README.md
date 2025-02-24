@@ -14,7 +14,7 @@ npm install room-craft
 ## Usage
 
 ```bash
-import { AR3DProductCard } from 'room-craft';
+import { Arcard } from "room-craft";
 ```
 ## Basic Example
 ```bash
