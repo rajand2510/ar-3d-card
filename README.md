@@ -19,15 +19,20 @@ import { AR3DProductCard } from 'room-craft';
 ## Basic Example
 ```bash
 import React from 'react';
-import { AR3DProductCard } from 'room-craft';
+import { Arcard } from "room-craft";
 
 function App() {
   return (
     <div>
-      <AR3DProductCard 
-        gltfPath="/models/indoor_plant/scene.gltf" 
-        imageSrc="/image/1.png" 
-      />
+    <Arcard
+  gltfPath="/models/tree_lamp.glb"
+  type="custom-size" // AR and 3D card
+  cardColor="#ffffff" // Optional: Set the card color
+  cardStyle="minimal" // Optional: Card style (e.g., 'minimal', 'classic')
+  customWidth="350px" // Minimum 300px suggested
+  customHeight="250px" // Minimum 300px suggested
+/>
+
     </div>
   );
 }
@@ -43,42 +48,6 @@ export default App;
 
 
 ## Setup Require
-Make this src/components folder
-name as Arcomponent.jsx
-
-```bash
-import { XrHitModelContainer } from 'room-craft';
-```
-
-```bash
-import { useLocation } from 'react-router-dom';
-import { XrHitModelContainer } from 'room-craft';
-
-const Arcomponent = () => {
-  const location = useLocation();
-  const params = new URLSearchParams(location.search);
-  const gltfPath = params.get('gltfPath') || './models/default.gltf';
-
-console.log(gltfPath);
-
-
-  console.log("gltfPath:", gltfPath); // Log the gltfPath for debugging
-
-  return (
-    <>
-      {gltfPath ? (
-        <XrHitModelContainer gltfPath={gltfPath} />
-      ) : (
-        <p>Error: No valid GLTF path provided.</p>
-      )}
-    </>
-  );
-};
-
-export default Arcomponent;
-
-
-```
 
 Make route 'xr' of this component
 
@@ -86,17 +55,22 @@ Example
 ```bash
 
 
-import Arcomponent from "./components/Arcomponent";
+import { Routes, Route } from "react-router-dom";
+import { XrHitModelContainer } from 'room-craft';
 
-const App = () => {
-  return(
-  <Routes>
-   <Route path="/xr" element={<Arcomponent />} />
-  </Routes>
- 
-)};
+function App() {
+  return (
+    <>
+     <Routes>
+        <Route path="/" element={<Home />} />
+      <Route path="/dashboard" element={<Dashboard/>} />
+      <Route path="/xr" element={<XrHitModelContainer/>} />
+      </Routes>
+      </>
+  )
+}
 
-export default App;
+export default App
 ```
 ## Features
 
